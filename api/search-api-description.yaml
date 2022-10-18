@@ -95,6 +95,33 @@ paths:
                 $ref: '#/components/schemas/Error'
 
 
+  /register:
+    post:
+      summary: Registers an object with the search service
+      description: Executes a search
+      operationId: RegisterObject
+      requestBody:
+        description: Object to register for search
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchableObject'
+      responses:
+        '200':
+          description: The search result a hit for this object will return in the future
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
 components:
   schemas:
     HealthCheckResponse:
@@ -139,7 +166,6 @@ components:
       required:
         - resultID
         - objectType
-        - objectID
         - objectSummary
       properties:
         resultID:
@@ -147,12 +173,21 @@ components:
           format: int64
         objectType:
           type: string
-        objectID:
-          type: integer
-          format: int64
         objectSummary:
           type: object
           $ref: '#/components/schemas/ObjectSummary'
+
+    SearchableObject:
+      required:
+        - objectSummary
+        - objectText
+      properties:
+        objectSummary:
+          type: object
+          $ref: '#/components/schemas/ObjectSummary'
+        objectText:
+          type: string
+          format: byte
 
     ObjectSummary:
       type: object

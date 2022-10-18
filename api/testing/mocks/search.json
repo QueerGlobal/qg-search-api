@@ -1,0 +1,241 @@
+{
+  "uuid": "a6acec1c-d60e-48ac-b762-ebbac725e4ab",
+  "lastMigration": 20,
+  "name": "QueerGlobal Search API",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3005,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "1a443132-6b48-41e0-90a1-9037f2d9086c",
+      "documentation": "Healthcheck for this API",
+      "method": "get",
+      "endpoint": "healthcheck",
+      "responses": [
+        {
+          "uuid": "a3e29d96-7caa-4814-8e86-d90045ffecb8",
+          "body": "[\n  {\n    \"status\": \"\",\n    \"serviceName\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response to healthchecks",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "666ed2ee-6a82-4fb2-ab86-c9a1e75567fd",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "2447e32d-cbc2-42fd-ae8c-36aea70d73fe",
+      "documentation": "Returns a search status by ID",
+      "method": "get",
+      "endpoint": "search/:id",
+      "responses": [
+        {
+          "uuid": "131c392e-3e3f-40e9-8b06-7d43119ce1d5",
+          "body": "{\n  \"resultID\": {{faker 'datatype.number'}},\n  \"objectType\": \"\",\n  \"objectSummary\": {\n    \"ObjectID\": {{faker 'datatype.number'}},\n    \"ObjectType\": \"\",\n    \"Title\": \"\",\n    \"Header\": \"\",\n    \"ObjectURL\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "person response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4272f412-f7cd-47b0-961e-8e8e4c9f88aa",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "435fa64b-fe1c-4fea-b003-12d9b36c94fc",
+      "documentation": "Executes a search",
+      "method": "post",
+      "endpoint": "search",
+      "responses": [
+        {
+          "uuid": "527f999a-3003-4de7-ab78-10b6d4f48fd7",
+          "body": "{\n  \"searchID\": {{faker 'datatype.number'}},\n  \"status\": \"\",\n  \"search\": {\n    \"value\": \"\"\n  },\n  \"location\": \"\",\n  \"results\": [\n    {\n      \"resultID\": {{faker 'datatype.number'}},\n      \"objectType\": \"\",\n      \"objectSummary\": {\n        \"ObjectID\": {{faker 'datatype.number'}},\n        \"ObjectType\": \"\",\n        \"Title\": \"\",\n        \"Header\": \"\",\n        \"ObjectURL\": \"\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "person",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "afb10885-4274-408b-b0d6-9d28cde7e804",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "29ce3656-d3a9-4739-8fd3-1a121d7b669c",
+      "documentation": "Registers an object with the search service",
+      "method": "post",
+      "endpoint": "register",
+      "responses": [
+        {
+          "uuid": "cc7a395c-991b-4294-a315-98c16faf0cc1",
+          "body": "{\n  \"resultID\": {{faker 'datatype.number'}},\n  \"objectType\": \"\",\n  \"objectSummary\": {\n    \"ObjectID\": {{faker 'datatype.number'}},\n    \"ObjectType\": \"\",\n    \"Title\": \"\",\n    \"Header\": \"\",\n    \"ObjectURL\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The search result a hit for this object will return in the future",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "addb310d-dc50-4ed3-9994-99d02c488875",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
