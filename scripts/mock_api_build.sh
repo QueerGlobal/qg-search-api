@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd mocks
+cd api/testing/mocks
 docker build -t mock-search-api -f search_dockerfile
