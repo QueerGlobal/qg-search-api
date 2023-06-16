@@ -1,20 +1,22 @@
 {
-  "uuid": "a6acec1c-d60e-48ac-b762-ebbac725e4ab",
-  "lastMigration": 20,
+  "uuid": "f7b98189-d159-4c98-a828-f9048fd1c6a2",
+  "lastMigration": 27,
   "name": "QueerGlobal Search API",
   "endpointPrefix": "api",
   "latency": 0,
-  "port": 3005,
-  "hostname": "0.0.0.0",
+  "port": 3007,
+  "hostname": "",
+  "folders": [],
   "routes": [
     {
-      "uuid": "1a443132-6b48-41e0-90a1-9037f2d9086c",
+      "uuid": "1890b59c-0ef0-4929-8d36-4eaedc9ed602",
+      "type": "http",
       "documentation": "Healthcheck for this API",
       "method": "get",
       "endpoint": "healthcheck",
       "responses": [
         {
-          "uuid": "a3e29d96-7caa-4814-8e86-d90045ffecb8",
+          "uuid": "c6ded29a-405a-4e26-b151-be0dfcb768b2",
           "body": "[\n  {\n    \"status\": \"\",\n    \"serviceName\": \"\"\n  }\n]",
           "latency": 0,
           "statusCode": 200,
@@ -25,7 +27,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -34,7 +38,7 @@
           "default": true
         },
         {
-          "uuid": "666ed2ee-6a82-4fb2-ab86-c9a1e75567fd",
+          "uuid": "ee2c5bba-863b-43c6-81f7-dcf549638232",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -45,7 +49,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -55,18 +61,18 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
     },
     {
-      "uuid": "2447e32d-cbc2-42fd-ae8c-36aea70d73fe",
+      "uuid": "f4419bc9-92b6-49fa-8c3d-2f7d25deb67d",
+      "type": "http",
       "documentation": "Returns a search status by ID",
       "method": "get",
       "endpoint": "search/:id",
       "responses": [
         {
-          "uuid": "131c392e-3e3f-40e9-8b06-7d43119ce1d5",
-          "body": "{\n  \"resultID\": {{faker 'datatype.number'}},\n  \"objectType\": \"\",\n  \"objectSummary\": {\n    \"ObjectID\": {{faker 'datatype.number'}},\n    \"ObjectType\": \"\",\n    \"Title\": \"\",\n    \"Header\": \"\",\n    \"ObjectURL\": \"\"\n  }\n}",
+          "uuid": "03f1c711-4a02-45ca-afc6-b94fab749bac",
+          "body": "{\n  \"resultID\": \"{{urlParam 'id'}}\",\n  \"objectType\": \"\",\n  \"objectSummary\": {\n    \"ObjectID\": {{faker 'datatype.number'}},\n    \"ObjectType\": \"\",\n    \"Title\": \"\",\n    \"Header\": \"\",\n    \"ObjectURL\": \"\"\n  }\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "person response",
@@ -76,7 +82,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -85,7 +93,7 @@
           "default": true
         },
         {
-          "uuid": "4272f412-f7cd-47b0-961e-8e8e4c9f88aa",
+          "uuid": "bc09545c-7360-4c16-a703-e248ce59c9f6",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -96,7 +104,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -106,17 +116,17 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
     },
     {
-      "uuid": "435fa64b-fe1c-4fea-b003-12d9b36c94fc",
+      "uuid": "8d5d3a25-a941-454b-ac5f-83d92cdb9bce",
+      "type": "http",
       "documentation": "Executes a search",
       "method": "post",
       "endpoint": "search",
       "responses": [
         {
-          "uuid": "527f999a-3003-4de7-ab78-10b6d4f48fd7",
+          "uuid": "d8ea6792-f43a-492e-854b-902dd6e3f89d",
           "body": "{\n  \"searchID\": {{faker 'datatype.number'}},\n  \"status\": \"\",\n  \"search\": {\n    \"value\": \"\"\n  },\n  \"location\": \"\",\n  \"results\": [\n    {\n      \"resultID\": {{faker 'datatype.number'}},\n      \"objectType\": \"\",\n      \"objectSummary\": {\n        \"ObjectID\": {{faker 'datatype.number'}},\n        \"ObjectType\": \"\",\n        \"Title\": \"\",\n        \"Header\": \"\",\n        \"ObjectURL\": \"\"\n      }\n    }\n  ]\n}",
           "latency": 0,
           "statusCode": 200,
@@ -127,7 +137,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -136,7 +148,7 @@
           "default": true
         },
         {
-          "uuid": "afb10885-4274-408b-b0d6-9d28cde7e804",
+          "uuid": "b61ee2f2-4ee6-44a3-a3ab-06d68825a90c",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -147,7 +159,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -157,17 +171,17 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
     },
     {
-      "uuid": "29ce3656-d3a9-4739-8fd3-1a121d7b669c",
+      "uuid": "1acacb6e-2ca4-4c7a-89c8-03baf83bc631",
+      "type": "http",
       "documentation": "Registers an object with the search service",
       "method": "post",
       "endpoint": "register",
       "responses": [
         {
-          "uuid": "cc7a395c-991b-4294-a315-98c16faf0cc1",
+          "uuid": "cee381cc-e7cb-4585-a71a-380478b2fa7c",
           "body": "{\n  \"resultID\": {{faker 'datatype.number'}},\n  \"objectType\": \"\",\n  \"objectSummary\": {\n    \"ObjectID\": {{faker 'datatype.number'}},\n    \"ObjectType\": \"\",\n    \"Title\": \"\",\n    \"Header\": \"\",\n    \"ObjectURL\": \"\"\n  }\n}",
           "latency": 0,
           "statusCode": 200,
@@ -178,7 +192,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -187,7 +203,7 @@
           "default": true
         },
         {
-          "uuid": "addb310d-dc50-4ed3-9994-99d02c488875",
+          "uuid": "9edbf80f-02d8-4931-9066-f45e59d2b62f",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -198,7 +214,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -208,8 +226,25 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "1890b59c-0ef0-4929-8d36-4eaedc9ed602"
+    },
+    {
+      "type": "route",
+      "uuid": "f4419bc9-92b6-49fa-8c3d-2f7d25deb67d"
+    },
+    {
+      "type": "route",
+      "uuid": "8d5d3a25-a941-454b-ac5f-83d92cdb9bce"
+    },
+    {
+      "type": "route",
+      "uuid": "1acacb6e-2ca4-4c7a-89c8-03baf83bc631"
     }
   ],
   "proxyMode": false,
@@ -237,5 +272,6 @@
       "key": "",
       "value": ""
     }
-  ]
+  ],
+  "data": []
 }
